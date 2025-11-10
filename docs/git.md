@@ -117,7 +117,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 回退到上一个版本，可以使用命令`git reset --hard HEAD^/commitid`，这里相关的有三个参数
 
-* `--hard`表示回退到上个版本的已提交状态
+* ```--hard```表示回退到上个版本的已提交状态
 * `--soft`表示回退到未提交状态
 * `--mixed`表示回退到已添加但未提交的状态
 
@@ -150,11 +150,8 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 在直接使用```git merge branch```时就可能会引发conflict，此时如果没有额外的指令，冲突文件中在无法决定的位置会出现
 ```text
-<<<<<<< HEAD
 这是当前分支中的内容。
-=======
 这是合并过来的分支中的内容。
->>>>>>> feature-branch
 ```
 
 此时，我们应当手动更改冲突文件，并重新进行add，commit
@@ -182,11 +179,19 @@ no changes added to commit (use "git add" and/or "git commit -a")
 ```git remote add <远端名称>(常用origin) <path>```github的常用路径：```github.com:<username>/<repositeroyname>.git
 
 若已经链接了别的仓库，可以先删除```git remote remove origin```
+
 ##### 查看
 
-```git remote```
+```git remote -v```会显示链接库的详细信息
 
 ##### 推送
 
-```git push -u origin master:main```
+```git push -u origin master:main```将origin的main与本地的master建立跟踪关系。在建立跟踪关系后就可以直接进行```git push```
+
+##### 获取远程仓库文件
+
+* clone：直接克隆一个远程仓库，相当于直接复制了该远程仓库的所有信息
+* fetch：获取远端仓库的最新提交的信息，并会建立一个origin/<branchname>，不同于我们当前仓库的分支。相当于没有合并两个分支。如果想要合并，可以使用```git merge origin/main```
+* pull：相当于pull+merge
+
 
