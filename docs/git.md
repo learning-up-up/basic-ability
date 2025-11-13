@@ -176,7 +176,8 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 ##### 添加
 
-```git remote add <远端名称>(常用origin) <path>```github的常用路径：```github.com:<username>/<repositeroyname>.git
+```git remote add <远端名称>(常用origin) <path>```github的常用路径：```github.com:<username>/<repositeroyname>.git```
+
 
 若已经链接了别的仓库，可以先删除```git remote remove origin```
 
