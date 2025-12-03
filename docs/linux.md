@@ -340,6 +340,7 @@ linux可以配置多个用户、配置多个用户组、用户加入不同的用
 
 在Ubuntu中，对应的是使用另一个命令```apt```
 
+软件管理目录位于`./user/bin`之下，可以通过`which appname`来查找
 ### systemctl
 
 ```systemctl [status | enable | start | stop | disable] app```可以管理相关软件的使用，包括开机自启和关闭
