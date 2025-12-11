@@ -97,3 +97,17 @@ b = b+ \lambda y_i
 ## 总结
 
 算法迭代的过程本质上是对于一个误分类点，超平面不断地作平移旋转直至将他变为正确分类的点
+
+## 实例
+
+通过平面上可二分类的两堆点来画出分割的曲线，可以调取机器学习库中的`Perceptron`模块
+```python
+clf = Perceptron(
+    max_iter=1000,
+    eta0=1.0,
+    random_state=42
+)
+
+clf.fit(X_train, y_train)
+clf.predict(X_test)
+```

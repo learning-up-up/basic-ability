@@ -64,3 +64,32 @@ plt.plot(linex, liney, '-', 'r')
 plt.show()#
 print(w)
 print(b)
+
+# 通过调用机器学习库的模块来实现
+# import numpy as np 
+# from sklearn.linear_model import Perceptron    Perceptron是一个类模块
+# import matplotlib.pyplot as plt
+# X1 = np.random.randn(10, 2)/4 + np.array([1, 1])
+# y1 = np.ones(10)
+# X2 = np.random.randn(10, 2)/4 + np.array([0, 0])
+# y2 = -np.ones(10)
+# X_train = np.vstack((X1, X2))
+# y_train = np.hstack((y1, y2))
+
+# plt.grid((-1,2))
+# plt.plot(X1[:10, 0], X1[:10, 1], 'ro')
+# plt.plot(X2[:10, 0], X2[:10, 1], 'bo')
+
+# clf = Perceptron(
+#     max_iter=1000,
+#     eta0=1.0,
+#     random_state=42
+# )
+
+# clf.fit(X_train, y_train)
+
+# print(clf.coef_)
+# x_ans = np.linspace(-1, 2, 1000)
+# y_ans = - (clf.coef_[0][0] * x_ans + clf.intercept_)/clf.coef_[0][1]
+# plt.plot(x_ans, y_ans, 'k-')
+# plt.show()
