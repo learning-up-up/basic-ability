@@ -36,7 +36,7 @@ def split_dataset(data, axis, value):
     result = []
     for row in data:
         if row[axis] == value:
-            reduced = row[:axis] + row[axis+1:]
+            reduced = row[:axis] + row[axis+1:] # 删去了本特征的数据列
             result.append(reduced)
     return result
 
@@ -48,7 +48,7 @@ def choose_best_feature(data):
     best_feature = -1
 
     for i in range(feature_num):
-        values = set(row[i] for row in data)
+        values = set(row[i] for row in data) # 统计该特征所有取值的可能性
         new_entropy = 0
 
         for value in values:
@@ -100,3 +100,20 @@ def build_tree(data, labels):
 tree = build_tree(dataset, labels)
 print(tree)
 
+def classify(tree, labels, sample):
+    root = next(iter(tree))
+    child = tree[root]
+    idx = labels.index(root)
+
+    value = sample[idx]
+    next_node = child[value]
+
+    if isinstance(next_node, dict):
+        return classify(next_node, labels, sample)
+    else:
+        return next_node
+
+
+test = ['adolescence', 'yes', 'no', 'good']
+
+print(classify(tree, labels, test))
