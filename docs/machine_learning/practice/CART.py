@@ -109,3 +109,34 @@ tree_full.fit(X_train, y_train)
 print("No pruning")
 print("Train accuracy:", accuracy_score(y_train, tree_full.predict(X_train)))
 print("Test accuracy:", accuracy_score(y_test, tree_full.predict(X_test)))
+path = tree_full.cost_complexity_pruning_path(X_train, y_train)
+ccp_alphas = path.ccp_alphas
+
+train_acc = []
+test_acc = []
+
+for alpha in ccp_alphas:
+    clf = DecisionTreeClassifier(
+        random_state=42,
+        ccp_alpha=alpha
+    )
+    clf.fit(X_train, y_train)
+
+    train_acc.append(accuracy_score(y_train, clf.predict(X_train)))
+    test_acc.append(accuracy_score(y_test, clf.predict(X_test)))
+
+best_idx = np.argmax(test_acc)
+best_alpha = ccp_alphas[best_idx]
+
+print("Best alpha:", best_alpha)
+print("Best test accuracy:", test_acc[best_idx])
+
+best_tree = DecisionTreeClassifier(
+    random_state=42,
+    ccp_alpha=best_alpha
+)
+best_tree.fit(X_train, y_train)
+
+print("With pruning")
+print("Train accuracy:", accuracy_score(y_train, best_tree.predict(X_train)))
+print("Test accuracy:", accuracy_score(y_test, best_tree.predict(X_test)))
